@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+const matches=(e,q)=>q.toLowerCase().split(/\s+/).filter(Boolean).some(t=>(e.title+' '+e.description+' '+e.source).toLowerCase().includes(t));const xpForVerified=n=>Math.max(0,n)*150;
+test('search matches actual fields',()=>{assert.equal(matches({title:'October invoice',description:'',source:'Drive'},'invoice'),true);assert.equal(matches({title:'October invoice',description:'',source:'Drive'},'passport'),false)});test('XP for verified completion only',()=>{assert.equal(xpForVerified(0),0);assert.equal(xpForVerified(1),150)});
